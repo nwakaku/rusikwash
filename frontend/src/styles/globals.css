@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@import "@heroui/styles";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans:
+    "Nunito", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-script: "Caveat", "Segoe Script", cursive;
+
+  --color-rusikwash-ink: #161b1c;
+  --color-rusikwash-sky: #d2f4ff;
+  --color-rusikwash-yellow: #ffedad;
+  --color-rusikwash-cyan: #02a2d7;
+  --color-rusikwash-gold: #ffd21a;
+  --color-rusikwash-pink: #e982aa;
+}
