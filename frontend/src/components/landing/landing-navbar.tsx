@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Link } from "@heroui/react";
+import { AnimatePresence, m as motion, useReducedMotion } from "motion/react";
 
 import { navLinks } from "@/config/landing";
 import {
@@ -12,11 +13,21 @@ import {
 
 export function LandingNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <nav
+    <motion.nav
+      animate={{ opacity: 1, y: 0 }}
       aria-label="Main navigation"
       className="sticky top-0 z-50 border-b border-white/40 bg-[#D2F4FF] backdrop-blur-xl"
+      initial={{
+        opacity: shouldReduceMotion ? 1 : 0,
+        y: shouldReduceMotion ? 0 : -14,
+      }}
+      transition={{
+        duration: shouldReduceMotion ? 0 : 0.45,
+        ease: "easeOut",
+      }}
     >
       <header className="mx-auto flex h-20 max-w-[1350px] items-center justify-between gap-4 px-5 sm:px-6 lg:px-8">
         <Link
@@ -49,9 +60,9 @@ export function LandingNavbar() {
             className="hidden h-10 rounded-full !bg-[#FFD21A] px-5 text-xs font-bold !text-[#161B1C] shadow-lg shadow-[#FFD21A]/30 hover:!bg-[#F5C400] xl:flex"
             size="sm"
             onPress={() => {
-              document
-                .getElementById("contact")
-                ?.scrollIntoView({ behavior: "smooth" });
+              document.getElementById("contact")?.scrollIntoView({
+                behavior: shouldReduceMotion ? "auto" : "smooth",
+              });
             }}
           >
             Schedule pickup
@@ -60,11 +71,11 @@ export function LandingNavbar() {
         </div>
 
         <Button
+          isIconOnly
           aria-controls="mobile-navigation"
           aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="text-[#161B1C] sm:hidden"
-          isIconOnly
           variant="ghost"
           onPress={() => setIsMenuOpen((open) => !open)}
         >
@@ -72,43 +83,52 @@ export function LandingNavbar() {
         </Button>
       </header>
 
-      {isMenuOpen ? (
-        <div
-          className="border-t border-white/50 bg-[#E6F9FF] px-5 pb-6 pt-3 sm:hidden"
-          id="mobile-navigation"
-        >
-          <ul className="flex flex-col">
-            {navLinks.map((item) => (
-              <li key={item.label}>
-                <Link
-                  className="flex w-full items-center justify-between rounded-xl px-2 py-3 text-sm font-medium text-[#294044] no-underline data-[hover=true]:bg-white/60 data-[hover=true]:no-underline"
-                  href={item.href}
-                  onPress={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                  <ArrowRightIcon className="size-4 text-[#02A2D7]" />
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-4 flex items-center gap-3">
-            <Link
-              className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#02A2D7] px-4 py-3 text-sm font-semibold text-white no-underline data-[hover=true]:no-underline"
-              href="tel:18007654321"
-            >
-              <PhoneIcon className="size-4" />1 (800) 765-43-21
-            </Link>
-            <Link
-              className="flex items-center justify-center gap-2 rounded-full border border-[#161B1C]/10 bg-white px-4 py-3 text-sm font-semibold text-[#161B1C] no-underline data-[hover=true]:no-underline"
-              href="#contact"
-              onPress={() => setIsMenuOpen(false)}
-            >
-              <UserIcon className="size-4 text-[#02A2D7]" />
-              Login
-            </Link>
-          </div>
-        </div>
-      ) : null}
-    </nav>
+      <AnimatePresence initial={false}>
+        {isMenuOpen ? (
+          <motion.div
+            animate={{ opacity: 1, height: "auto" }}
+            className="overflow-hidden border-t border-white/50 bg-[#E6F9FF] px-5 pb-6 pt-3 sm:hidden"
+            exit={{ opacity: 0, height: 0 }}
+            id="mobile-navigation"
+            initial={{ opacity: 0, height: 0 }}
+            transition={{
+              duration: shouldReduceMotion ? 0 : 0.22,
+              ease: "easeOut",
+            }}
+          >
+            <ul className="flex flex-col">
+              {navLinks.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    className="flex w-full items-center justify-between rounded-xl px-2 py-3 text-sm font-medium text-[#294044] no-underline data-[hover=true]:bg-white/60 data-[hover=true]:no-underline"
+                    href={item.href}
+                    onPress={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                    <ArrowRightIcon className="size-4 text-[#02A2D7]" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-4 flex items-center gap-3">
+              <Link
+                className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#02A2D7] px-4 py-3 text-sm font-semibold text-white no-underline data-[hover=true]:no-underline"
+                href="tel:18007654321"
+              >
+                <PhoneIcon className="size-4" />1 (800) 765-43-21
+              </Link>
+              <Link
+                className="flex items-center justify-center gap-2 rounded-full border border-[#161B1C]/10 bg-white px-4 py-3 text-sm font-semibold text-[#161B1C] no-underline data-[hover=true]:no-underline"
+                href="#contact"
+                onPress={() => setIsMenuOpen(false)}
+              >
+                <UserIcon className="size-4 text-[#02A2D7]" />
+                Login
+              </Link>
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+    </motion.nav>
   );
 }

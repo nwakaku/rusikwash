@@ -1,4 +1,5 @@
 import { Avatar, Button, Link } from "@heroui/react";
+import { m as motion, useReducedMotion } from "motion/react";
 
 import { testimonials } from "@/config/landing";
 
@@ -47,9 +48,10 @@ function HeroWave() {
 }
 
 export function LandingHero() {
+  const shouldReduceMotion = useReducedMotion();
   const scrollToPickup = () => {
     document.getElementById("how-it-works")?.scrollIntoView({
-      behavior: "smooth",
+      behavior: shouldReduceMotion ? "auto" : "smooth",
     });
   };
 
@@ -59,8 +61,20 @@ export function LandingHero() {
       id="home"
     >
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-16 top-8 size-52 rounded-full bg-white/35 blur-3xl" />
-        <div className="absolute -right-16 top-16 size-64 rounded-full bg-white/25 blur-3xl" />
+        <motion.div
+          animate={
+            shouldReduceMotion ? undefined : { x: [0, 12, 0], y: [0, -8, 0] }
+          }
+          className="absolute -left-16 top-8 size-52 rounded-full bg-white/35 blur-3xl"
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          animate={
+            shouldReduceMotion ? undefined : { x: [0, -10, 0], y: [0, 12, 0] }
+          }
+          className="absolute -right-16 top-16 size-64 rounded-full bg-white/25 blur-3xl"
+          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+        />
         <div className="absolute left-[37%] top-[19%] hidden size-3 rounded-full border-2 border-[#02A2D7]/45 lg:block" />
         <div className="absolute left-[47%] top-[64%] hidden size-4 rounded-full border-2 border-[#02A2D7]/35 lg:block" />
         <div className="absolute right-[17%] top-[13%] hidden size-2.5 rounded-full bg-[#02A2D7]/35 lg:block" />
@@ -68,8 +82,19 @@ export function LandingHero() {
       </div>
 
       <div className="relative z-10 h-full w-full">
-        <div className="relative mx-auto max-w-xl lg:absolute lg:left-[9.26%] lg:top-[11%] lg:mx-0 lg:w-[40%] lg:max-w-none">
-          <h1 className="text-[38px] font-extrabold leading-[0.94] tracking-[-1.8px] text-black sm:text-[50px] sm:leading-[0.88] lg:text-[59px] lg:leading-[0.85] lg:tracking-[-2.5px]">
+        <motion.div
+          animate={{ opacity: 1, x: 0 }}
+          className="relative mx-auto max-w-xl lg:absolute lg:left-[9.26%] lg:top-[11%] lg:mx-0 lg:w-[40%] lg:max-w-none"
+          initial={{
+            opacity: shouldReduceMotion ? 1 : 0,
+            x: shouldReduceMotion ? 0 : -24,
+          }}
+          transition={{
+            duration: shouldReduceMotion ? 0 : 0.75,
+            ease: "easeOut",
+          }}
+        >
+          <h1 className="text-[clamp(1.75rem,8vw,3.125rem)] font-extrabold leading-[0.94] tracking-[-1.8px] text-black sm:text-[50px] sm:leading-[0.88] lg:text-[59px] lg:leading-[0.85] lg:tracking-[-2.5px]">
             Where every fabric
             <br />
             enjoys a <span className="text-[#FFD21A]">gentle</span>,
@@ -78,34 +103,71 @@ export function LandingHero() {
           </h1>
 
           <p className="mt-5 max-w-[390px] text-xs leading-4 text-[#3E5B61] sm:mt-6">
-            Phasellus sed nisi ac dolor fermentum facilisis. Quisque ultricies
-            nunc turpis. Aliquam erat volutpat.
+            Fresh, professionally cared-for laundry, collected and delivered on
+            a schedule that works for you.
           </p>
 
-          <Button
-            aria-label="Schedule a pickup"
-            className="mt-8 flex size-[112px] min-w-[112px] flex-col items-center justify-center rounded-full !bg-[#FFD21A] p-0 text-[#161B1C] shadow-none transition-transform hover:scale-105 hover:!bg-[#F5C400] lg:absolute lg:left-[390px] lg:top-[150px] lg:mt-0 lg:size-[125px] lg:min-w-[125px]"
-            onPress={scrollToPickup}
+          <motion.div
+            className="mt-8 w-fit lg:absolute lg:left-[390px] lg:top-[150px] lg:mt-0"
+            whileHover={
+              shouldReduceMotion ? undefined : { scale: 1.06, rotate: 3 }
+            }
+            whileTap={shouldReduceMotion ? undefined : { scale: 0.96 }}
           >
-            <span className="block w-[76px] rotate-[9deg] text-center text-xs font-bold uppercase leading-[1.3] tracking-[0.08em] underline underline-offset-[3px]">
-              <img src="/basket.png" alt="Pickup icon" className="mx-auto mb-1 h-15 w-15" />
-            </span>
-          </Button>
-        </div>
+            <Button
+              aria-label="Schedule a pickup"
+              className="flex size-[112px] min-w-[112px] flex-col items-center justify-center rounded-full !bg-[#FFD21A] p-0 text-[#161B1C] shadow-[0_12px_30px_rgba(255,210,26,0.28)] hover:!bg-[#F5C400] lg:size-[125px] lg:min-w-[125px]"
+              onPress={scrollToPickup}
+            >
+              <span className="block w-[76px] rotate-[9deg] text-center text-xs font-bold uppercase leading-[1.3] tracking-[0.08em] underline underline-offset-[3px]">
+                <img
+                  alt="Pickup basket"
+                  className="mx-auto mb-1 size-15"
+                  src="/basket.png"
+                />
+              </span>
+            </Button>
+          </motion.div>
+        </motion.div>
 
-        <div className="relative mx-auto mt-8 w-full max-w-[430px] lg:absolute lg:right-[3%] lg:top-[2%] lg:mt-0 lg:h-[96%] lg:w-[48%] lg:max-w-none">
+        <motion.div
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          className="relative mx-auto mt-8 w-full max-w-[430px] lg:absolute lg:right-[3%] lg:top-[2%] lg:mt-0 lg:h-[96%] lg:w-[48%] lg:max-w-none"
+          initial={{
+            opacity: shouldReduceMotion ? 1 : 0,
+            y: shouldReduceMotion ? 0 : 28,
+            scale: shouldReduceMotion ? 1 : 0.97,
+          }}
+          transition={{
+            duration: shouldReduceMotion ? 0 : 0.9,
+            delay: shouldReduceMotion ? 0 : 0.12,
+            ease: "easeOut",
+          }}
+        >
           <div className="absolute inset-x-12 bottom-10 top-16 rounded-[50%] bg-white/25 blur-3xl" />
-          <img
+          <motion.img
             alt="Woman holding a basket of freshly cleaned laundry"
             className="relative h-auto w-full object-contain object-center drop-shadow-[0_26px_38px_rgba(22,27,28,0.12)] lg:h-full"
             decoding="async"
             src="/woman-model.png"
           />
-        </div>
+        </motion.div>
 
         <HeroWave />
 
-        <div className="absolute -bottom-2 -left-[50%] z-[4] w-[100%] sm:-left-[40%] sm:w-[80%] lg:-bottom-6 lg:-left-[24%] lg:w-[48%]">
+        <motion.div
+          animate={{ opacity: 1, x: 0 }}
+          className="absolute -bottom-2 -left-[50%] z-[4] w-[100%] sm:-left-[40%] sm:w-[80%] lg:-bottom-6 lg:-left-[24%] lg:w-[48%]"
+          initial={{
+            opacity: shouldReduceMotion ? 1 : 0,
+            x: shouldReduceMotion ? 0 : -42,
+          }}
+          transition={{
+            duration: shouldReduceMotion ? 0 : 0.8,
+            delay: shouldReduceMotion ? 0 : 0.25,
+            ease: "easeOut",
+          }}
+        >
           <div className="relative">
             <img
               alt="RusikWash delivery van"
@@ -117,9 +179,21 @@ export function LandingHero() {
               rusikwash
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="relative z-20 mx-auto -mt-6 flex w-max items-center gap-3 rounded-full bg-white/95 py-2 pl-2 pr-5 shadow-xl shadow-[#161B1C]/10 backdrop-blur sm:absolute sm:left-[52%] sm:top-[64%] sm:mx-0 lg:left-[53.7%] lg:top-[67%]">
+        <motion.div
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          className="relative z-20 mx-auto -mt-6 flex w-max items-center gap-3 rounded-full bg-white/95 py-2 pl-2 pr-5 shadow-xl shadow-[#161B1C]/10 backdrop-blur sm:absolute sm:left-[52%] sm:top-[64%] sm:mx-0 lg:left-[53.7%] lg:top-[67%]"
+          initial={{
+            opacity: shouldReduceMotion ? 1 : 0,
+            y: shouldReduceMotion ? 0 : 12,
+            scale: shouldReduceMotion ? 1 : 0.96,
+          }}
+          transition={{
+            duration: shouldReduceMotion ? 0 : 0.5,
+            delay: shouldReduceMotion ? 0 : 0.45,
+          }}
+        >
           <div className="flex items-center">
             <div className="flex -space-x-3">
               {heroCustomers.map((customer) => (
@@ -143,7 +217,7 @@ export function LandingHero() {
             <br />
             customers
           </span>
-        </div>
+        </motion.div>
 
         <Link
           className="absolute -right-px top-[122px] z-30 hidden h-[161px] w-[50px] items-center justify-center rounded-l-2xl !bg-[#FFD21A] text-[11px] font-bold tracking-[0.02em] text-[#161B1C] no-underline hover:!bg-[#F5C400] data-[hover=true]:no-underline xl:flex [writing-mode:vertical-rl]"
@@ -152,9 +226,39 @@ export function LandingHero() {
           1 (800) 765-43-21
         </Link>
 
-        <Sparkle className="absolute left-[42%] top-[34%] z-20 hidden size-3 text-[#FFD21A] lg:block" />
-        <Sparkle className="absolute left-[47%] top-[68%] z-20 hidden size-2.5 text-[#FFD21A]/80 lg:block" />
-        <Sparkle className="absolute right-[7%] top-[10%] z-20 hidden size-3.5 text-[#FFD21A] lg:block" />
+        <motion.div
+          animate={
+            shouldReduceMotion
+              ? undefined
+              : { opacity: [0.45, 1, 0.45], scale: [0.9, 1.15, 0.9] }
+          }
+          className="absolute left-[42%] top-[34%] z-20 hidden lg:block"
+          transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <Sparkle className="size-3 text-[#FFD21A]" />
+        </motion.div>
+        <motion.div
+          animate={
+            shouldReduceMotion
+              ? undefined
+              : { opacity: [0.4, 1, 0.4], scale: [0.9, 1.2, 0.9] }
+          }
+          className="absolute left-[47%] top-[68%] z-20 hidden lg:block"
+          transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <Sparkle className="size-2.5 text-[#FFD21A]/80" />
+        </motion.div>
+        <motion.div
+          animate={
+            shouldReduceMotion
+              ? undefined
+              : { opacity: [0.5, 1, 0.5], scale: [0.9, 1.12, 0.9] }
+          }
+          className="absolute right-[7%] top-[10%] z-20 hidden lg:block"
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <Sparkle className="size-3.5 text-[#FFD21A]" />
+        </motion.div>
       </div>
     </section>
   );

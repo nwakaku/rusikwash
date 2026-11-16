@@ -14,6 +14,8 @@ export type IconKey =
   | "tshirt"
   | "jeans";
 
+export type ProcessIllustrationKey = "account" | "pickup" | "wash" | "delivery";
+
 export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About Us", href: "#how-it-works" },
@@ -25,29 +27,34 @@ export const navLinks = [
 
 export const processSteps: {
   icon: IconKey;
+  illustration: ProcessIllustrationKey;
   title: string;
   description: string;
 }[] = [
   {
     icon: "user",
+    illustration: "account",
     title: "Sign up",
     description:
       "Create your free RusikWash account in under a minute and tell us your laundry preferences.",
   },
   {
     icon: "truck",
+    illustration: "pickup",
     title: "Zero Pickup Cost",
     description:
       "Book a collection window and our friendly driver comes straight to your door.",
   },
   {
     icon: "sparkles",
+    illustration: "wash",
     title: "Spotless Clean",
     description:
       "Every item is washed, dried, folded and checked by our laundry specialists.",
   },
   {
     icon: "home",
+    illustration: "delivery",
     title: "No Delivery Charges",
     description:
       "Fresh clothes arrive back at your door, beautifully folded and ready to wear.",
@@ -94,14 +101,52 @@ export const priceItems: {
   icon: IconKey;
   name: string;
   price: string;
+  image: string;
   featured?: boolean;
 }[] = [
-  { icon: "shirt", name: "Shirts", price: "From $4.99" },
-  { icon: "shorts", name: "Shorts", price: "From $6.99" },
-  { icon: "kids", name: "Kids Ware", price: "$7.99", featured: true },
-  { icon: "tie", name: "Tie", price: "From $3.99" },
-  { icon: "tshirt", name: "T-Shirts", price: "From $4.49" },
-  { icon: "jeans", name: "Jeans", price: "From $8.99" },
+  {
+    icon: "shirt",
+    name: "Shirts",
+    price: "From $4.99",
+    image:
+      "https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=400&q=85",
+  },
+  {
+    icon: "shorts",
+    name: "Shorts",
+    price: "From $6.99",
+    image:
+      "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=400&q=85",
+  },
+  {
+    icon: "kids",
+    name: "Kids Wear",
+    price: "$7.99",
+    featured: true,
+    image:
+      "https://images.unsplash.com/photo-1503919005314-30d93d07d823?auto=format&fit=crop&w=400&q=85",
+  },
+  {
+    icon: "tie",
+    name: "Tie",
+    price: "From $3.99",
+    image:
+      "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=400&q=85",
+  },
+  {
+    icon: "tshirt",
+    name: "T-Shirts",
+    price: "From $4.49",
+    image:
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400&q=85",
+  },
+  {
+    icon: "jeans",
+    name: "Jeans",
+    price: "From $8.99",
+    image:
+      "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=400&q=85",
+  },
 ];
 
 export const testimonials = [
@@ -111,7 +156,7 @@ export const testimonials = [
     quote:
       "I used to dread laundry day. Now RusikWash picks up, cleans and returns everything looking brand new. It honestly feels like a small luxury.",
     image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80",
+      "https://images.pexels.com/photos/36338866/pexels-photo-36338866.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
   {
     name: "Marcus Chen",
@@ -119,7 +164,7 @@ export const testimonials = [
     quote:
       "The collection window is always on time and our team's shirts come back crisp. RusikWash quietly makes the whole office run smoother.",
     image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
+      "https://images.pexels.com/photos/13801809/pexels-photo-13801809.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
   {
     name: "Sofia Reyes",
@@ -127,7 +172,7 @@ export const testimonials = [
     quote:
       "They treat every fabric like it belongs to them. My delicate pieces have never looked better, and the folded delivery is a joy.",
     image:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      "https://images.pexels.com/photos/2520446/pexels-photo-2520446.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
   {
     name: "Daniel Brooks",
@@ -135,7 +180,7 @@ export const testimonials = [
     quote:
       "From table linens to uniforms, RusikWash handles our weekly volume without a single missed pickup. Reliable every single week.",
     image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+      "https://images.pexels.com/photos/34630594/pexels-photo-34630594.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
   {
     name: "Maya Patel",
@@ -143,7 +188,7 @@ export const testimonials = [
     quote:
       "My studio towels and activewear come back soft and fresh. The app updates make it effortless to plan around my classes.",
     image:
-      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=300&q=80",
+      "https://images.pexels.com/photos/7552695/pexels-photo-7552695.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
 ];
 

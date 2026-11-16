@@ -1,4 +1,5 @@
 import { Button, Input, Link, Separator, TextField } from "@heroui/react";
+import { m as motion, useReducedMotion } from "motion/react";
 
 import { navLinks } from "@/config/landing";
 import {
@@ -27,6 +28,8 @@ const socialLinks = [
 ];
 
 export function LandingFooter() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <>
       <div aria-hidden className="bg-white">
@@ -42,7 +45,21 @@ export function LandingFooter() {
         </svg>
       </div>
 
-      <footer className="bg-[#161B1C] text-white" id="contact">
+      <motion.footer
+        animate={{ opacity: 1, y: 0 }}
+        className="bg-[#161B1C] text-white"
+        id="contact"
+        initial={{
+          opacity: shouldReduceMotion ? 1 : 0,
+          y: shouldReduceMotion ? 0 : 16,
+        }}
+        transition={{
+          duration: shouldReduceMotion ? 0 : 0.65,
+          ease: "easeOut",
+        }}
+        viewport={{ once: true, amount: 0.12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+      >
         <div className="mx-auto max-w-[1350px] px-5 pb-10 pt-12 sm:px-6 lg:px-8">
           <div className="flex flex-col items-start justify-between gap-8 border-b border-white/10 pb-10 lg:flex-row lg:items-center">
             <div>
@@ -197,7 +214,7 @@ export function LandingFooter() {
             </div>
           </div>
         </div>
-      </footer>
+      </motion.footer>
     </>
   );
 }

@@ -1,8 +1,86 @@
+import type { ProcessIllustrationKey } from "@/config/landing";
+
 import { Card, CardContent } from "@heroui/react";
 import clsx from "clsx";
 
 import { images } from "@/config/landing";
 import { CheckIcon, StarIcon } from "@/components/landing/brand-icons";
+
+export function ProcessIllustration({
+  variant,
+}: {
+  variant: ProcessIllustrationKey;
+}) {
+  return (
+    <svg
+      aria-hidden
+      className="size-full"
+      fill="none"
+      focusable="false"
+      viewBox="0 0 120 120"
+    >
+      <circle cx="60" cy="60" fill="#DDF7FC" r="58" />
+      <g
+        stroke="#078CB4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2.5"
+      >
+        {variant === "account" ? (
+          <>
+            <path
+              d="M37 30h36a6 6 0 0 1 6 6v52H41a7 7 0 0 1-7-7V36a6 6 0 0 1 3-6Z"
+              fill="#fff"
+            />
+            <path d="M46 42h19M46 49h13" stroke="#9CCED9" />
+            <circle cx="58" cy="62" fill="#FFD21A" r="8" />
+            <path d="M43 83c1.7-7.5 7-11 15-11s13.3 3.5 15 11" fill="#E982AA" />
+            <path d="m75 34 3 3 6-7" stroke="#02A2D7" strokeWidth="3" />
+          </>
+        ) : null}
+        {variant === "pickup" ? (
+          <>
+            <path d="M24 49h48v28H24z" fill="#fff" />
+            <path d="M72 57h14l12 13v7H72z" fill="#A8E8F5" />
+            <path d="M80 61v9h12" />
+            <circle cx="40" cy="80" fill="#161B1C" r="7" />
+            <circle cx="82" cy="80" fill="#161B1C" r="7" />
+            <path d="M43 39h21M48 33h12" stroke="#02A2D7" />
+            <path d="m30 43 6-7" stroke="#E982AA" strokeWidth="4" />
+          </>
+        ) : null}
+        {variant === "wash" ? (
+          <>
+            <rect fill="#fff" height="52" rx="8" width="52" x="34" y="34" />
+            <path d="M35 47h50" />
+            <circle cx="60" cy="65" fill="#A8E8F5" r="15" />
+            <circle cx="60" cy="65" r="9" stroke="#fff" />
+            <circle cx="75" cy="41" fill="#FFD21A" r="2" stroke="none" />
+            <circle cx="67" cy="41" fill="#E982AA" r="2" stroke="none" />
+            <path d="M55 64c2-3 6-3 8 0s1 6-2 7" stroke="#fff" />
+            <path
+              d="m89 29 2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5Z"
+              fill="#FFD21A"
+              stroke="none"
+            />
+          </>
+        ) : null}
+        {variant === "delivery" ? (
+          <>
+            <path d="m29 55 31-25 31 25v31H29z" fill="#fff" />
+            <path d="M51 86V65h18v21" fill="#A8E8F5" />
+            <path d="M40 58h12v11H40z" fill="#DDF7FC" />
+            <path d="M68 58h12v11H68z" fill="#DDF7FC" />
+            <path d="M48 78h24" stroke="#E982AA" strokeWidth="4" />
+            <path d="m75 82 4 4 9-10" stroke="#02A2D7" strokeWidth="3" />
+          </>
+        ) : null}
+      </g>
+      <circle cx="24" cy="35" fill="#FFD21A" r="4" />
+      <circle cx="94" cy="87" fill="#E982AA" r="3" />
+    </svg>
+  );
+}
 
 export function RusikWashMark({
   className,
@@ -98,10 +176,10 @@ export function VanArt({ className }: { className?: string }) {
       <path d="M64 61h95v38H64c-5 0-9-4-9-9V70c0-5 4-9 9-9Z" fill="#D2F4FF" />
       <path
         d="M79 69h64"
+        opacity=".9"
         stroke="white"
         strokeLinecap="round"
         strokeWidth="5"
-        opacity=".9"
       />
       <path
         d="M33 111c25-11 45-11 70 0s45 11 70 0 45-11 70 0 45 11 70 0 45-11 71 0v20H33v-20Z"
