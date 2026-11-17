@@ -19,7 +19,7 @@ export function SectionHeading({
         <p
           className={clsx(
             "mb-3 text-xs font-semibold uppercase tracking-[0.22em]",
-            light ? "text-[#FFD21A]" : "text-[#02A2D7]",
+            light ? "text-white" : "text-rusikwash-teal",
           )}
         >
           {eyebrow}
@@ -28,7 +28,7 @@ export function SectionHeading({
       <h2
         className={clsx(
           "text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.65rem] lg:leading-[1.15]",
-          light ? "text-white" : "text-[#161B1C]",
+          light ? "text-white" : "text-black",
         )}
       >
         {title}
@@ -37,7 +37,7 @@ export function SectionHeading({
         <p
           className={clsx(
             "mt-4 text-base leading-7",
-            light ? "text-white/75" : "text-[#667579]",
+            light ? "text-white/75" : "text-black/65",
           )}
         >
           {subtitle}

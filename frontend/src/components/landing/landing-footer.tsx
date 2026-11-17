@@ -34,7 +34,7 @@ export function LandingFooter() {
     <>
       <div aria-hidden className="bg-white">
         <svg
-          className="block h-12 w-full text-[#161B1C] sm:h-16"
+          className="block h-12 w-full text-rusikwash-teal sm:h-16"
           preserveAspectRatio="none"
           viewBox="0 0 1440 80"
         >
@@ -47,7 +47,7 @@ export function LandingFooter() {
 
       <motion.footer
         animate={{ opacity: 1, y: 0 }}
-        className="bg-[#161B1C] text-white"
+        className="bg-rusikwash-teal text-white"
         id="contact"
         initial={{
           opacity: shouldReduceMotion ? 1 : 0,
@@ -63,7 +63,7 @@ export function LandingFooter() {
         <div className="mx-auto max-w-[1350px] px-5 pb-10 pt-12 sm:px-6 lg:px-8">
           <div className="flex flex-col items-start justify-between gap-8 border-b border-white/10 pb-10 lg:flex-row lg:items-center">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#FFD21A]">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white">
                 Stay in the loop
               </p>
               <h2 className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">
@@ -90,7 +90,7 @@ export function LandingFooter() {
                 />
               </TextField>
               <Button
-                className="h-12 shrink-0 rounded-full !bg-[#FFD21A] px-6 text-xs font-bold !text-[#161B1C] shadow-lg shadow-[#FFD21A]/15 hover:!bg-[#F5C400]"
+                className="h-12 shrink-0 rounded-full !bg-rusikwash-orange px-6 text-xs font-bold !text-black shadow-lg shadow-rusikwash-orange/20 hover:!bg-[#E64600]"
                 type="submit"
               >
                 Subscribe now
@@ -108,7 +108,7 @@ export function LandingFooter() {
                 the things that matter.
               </p>
               <Link
-                className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-[#FFD21A] no-underline data-[hover=true]:no-underline"
+                className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-white no-underline data-[hover=true]:no-underline"
                 href="#how-it-works"
               >
                 Read more
@@ -119,7 +119,7 @@ export function LandingFooter() {
                   <Link
                     key={label}
                     aria-label={label}
-                    className="flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 no-underline transition-colors hover:bg-[#02A2D7] hover:text-white data-[hover=true]:no-underline"
+                    className="flex size-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 no-underline transition-colors hover:bg-rusikwash-orange hover:text-black data-[hover=true]:no-underline"
                     href={href}
                     rel="noopener noreferrer"
                     target="_blank"
@@ -134,7 +134,7 @@ export function LandingFooter() {
               <h3 className="text-sm font-semibold text-white">Get in touch</h3>
               <ul className="mt-5 space-y-4 text-sm text-white/55">
                 <li className="flex gap-3">
-                  <MapPinIcon className="mt-0.5 size-4 shrink-0 text-[#FFD21A]" />
+                  <MapPinIcon className="mt-0.5 size-4 shrink-0 text-rusikwash-orange" />
                   <span>
                     25 Breeze Avenue, Suite 12
                     <br />
@@ -142,7 +142,7 @@ export function LandingFooter() {
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <MailIcon className="size-4 shrink-0 text-[#FFD21A]" />
+                  <MailIcon className="size-4 shrink-0 text-rusikwash-orange" />
                   <Link
                     className="text-white/55 no-underline hover:text-white data-[hover=true]:no-underline"
                     href="mailto:hello@rusikwash.com"
@@ -151,7 +151,7 @@ export function LandingFooter() {
                   </Link>
                 </li>
                 <li className="flex items-center gap-3">
-                  <PhoneIcon className="size-4 shrink-0 text-[#FFD21A]" />
+                  <PhoneIcon className="size-4 shrink-0 text-rusikwash-orange" />
                   <Link
                     className="text-white/55 no-underline hover:text-white data-[hover=true]:no-underline"
                     href="tel:18007654321"
@@ -168,7 +168,7 @@ export function LandingFooter() {
                 {accountLinks.map((item) => (
                   <li key={item.label}>
                     <Link
-                      className="text-sm text-white/55 no-underline transition-colors hover:text-[#FFD21A] data-[hover=true]:no-underline"
+                      className="text-sm text-white/55 no-underline transition-colors hover:text-white data-[hover=true]:no-underline"
                       href={item.href}
                     >
                       {item.label}
@@ -184,7 +184,7 @@ export function LandingFooter() {
                 {navLinks.map((item) => (
                   <li key={item.label}>
                     <Link
-                      className="text-sm text-white/55 no-underline transition-colors hover:text-[#FFD21A] data-[hover=true]:no-underline"
+                      className="text-sm text-white/55 no-underline transition-colors hover:text-white data-[hover=true]:no-underline"
                       href={item.href}
                     >
                       {item.label}

@@ -10,7 +10,7 @@ export default function LandingLayout({
 }) {
   return (
     <LazyMotion features={domAnimation}>
-      <div className="min-h-screen bg-white font-sans text-[#161B1C]">
+      <div className="min-h-screen bg-white font-sans text-black">
         <LandingNavbar />
         <main>{children}</main>
         <LandingFooter />

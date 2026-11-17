@@ -8,7 +8,6 @@ import {
   CloseIcon,
   MenuIcon,
   PhoneIcon,
-  UserIcon,
 } from "@/components/landing/brand-icons";
 
 export function LandingNavbar() {
@@ -19,7 +18,7 @@ export function LandingNavbar() {
     <motion.nav
       animate={{ opacity: 1, y: 0 }}
       aria-label="Main navigation"
-      className="sticky top-0 z-50 border-b border-white/40 bg-[#D2F4FF] backdrop-blur-xl"
+      className="sticky top-0 z-50 border-b border-white/10 bg-rusikwash-teal text-white backdrop-blur-xl"
       initial={{
         opacity: shouldReduceMotion ? 1 : 0,
         y: shouldReduceMotion ? 0 : -14,
@@ -37,7 +36,7 @@ export function LandingNavbar() {
         >
           <img
             alt="RusikWash logo"
-            className="h-20 w-auto"
+            className="h-20 w-auto brightness-0 invert"
             src="/RusikWash.svg"
           />
         </Link>
@@ -46,7 +45,7 @@ export function LandingNavbar() {
           {navLinks.map((item) => (
             <li key={item.label}>
               <Link
-                className="text-sm font-medium text-[#294044]/80 no-underline transition-colors hover:text-[#02A2D7] data-[hover=true]:text-[#02A2D7]"
+                className="text-sm font-medium text-white/85 no-underline decoration-rusikwash-orange decoration-2 underline-offset-8 transition-colors hover:text-white hover:underline data-[hover=true]:text-white"
                 href={item.href}
               >
                 {item.label}
@@ -57,7 +56,7 @@ export function LandingNavbar() {
 
         <div className="hidden items-center gap-3 sm:flex">
           <Button
-            className="hidden h-10 rounded-full !bg-[#FFD21A] px-5 text-xs font-bold !text-[#161B1C] shadow-lg shadow-[#FFD21A]/30 hover:!bg-[#F5C400] xl:flex"
+            className="hidden h-10 rounded-full !bg-rusikwash-orange px-5 text-xs font-bold !text-black shadow-lg shadow-rusikwash-orange/20 hover:!bg-[#E64600] xl:flex"
             size="sm"
             onPress={() => {
               document.getElementById("contact")?.scrollIntoView({
@@ -75,7 +74,7 @@ export function LandingNavbar() {
           aria-controls="mobile-navigation"
           aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="text-[#161B1C] sm:hidden"
+          className="text-white sm:hidden"
           variant="ghost"
           onPress={() => setIsMenuOpen((open) => !open)}
         >
@@ -87,7 +86,7 @@ export function LandingNavbar() {
         {isMenuOpen ? (
           <motion.div
             animate={{ opacity: 1, height: "auto" }}
-            className="overflow-hidden border-t border-white/50 bg-[#E6F9FF] px-5 pb-6 pt-3 sm:hidden"
+            className="overflow-hidden border-t border-white/10 bg-rusikwash-teal px-5 pb-6 pt-3 sm:hidden"
             exit={{ opacity: 0, height: 0 }}
             id="mobile-navigation"
             initial={{ opacity: 0, height: 0 }}
@@ -100,30 +99,22 @@ export function LandingNavbar() {
               {navLinks.map((item) => (
                 <li key={item.label}>
                   <Link
-                    className="flex w-full items-center justify-between rounded-xl px-2 py-3 text-sm font-medium text-[#294044] no-underline data-[hover=true]:bg-white/60 data-[hover=true]:no-underline"
+                    className="flex w-full items-center justify-between rounded-xl px-2 py-3 text-sm font-medium text-white no-underline data-[hover=true]:bg-white/10 data-[hover=true]:no-underline"
                     href={item.href}
                     onPress={() => setIsMenuOpen(false)}
                   >
                     {item.label}
-                    <ArrowRightIcon className="size-4 text-[#02A2D7]" />
+                    <ArrowRightIcon className="size-4 text-rusikwash-orange" />
                   </Link>
                 </li>
               ))}
             </ul>
             <div className="mt-4 flex items-center gap-3">
               <Link
-                className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#02A2D7] px-4 py-3 text-sm font-semibold text-white no-underline data-[hover=true]:no-underline"
+                className="flex flex-1 items-center justify-center gap-2 rounded-full bg-rusikwash-orange px-4 py-3 text-sm font-semibold text-black no-underline data-[hover=true]:no-underline"
                 href="tel:18007654321"
               >
                 <PhoneIcon className="size-4" />1 (800) 765-43-21
-              </Link>
-              <Link
-                className="flex items-center justify-center gap-2 rounded-full border border-[#161B1C]/10 bg-white px-4 py-3 text-sm font-semibold text-[#161B1C] no-underline data-[hover=true]:no-underline"
-                href="#contact"
-                onPress={() => setIsMenuOpen(false)}
-              >
-                <UserIcon className="size-4 text-[#02A2D7]" />
-                Login
               </Link>
             </div>
           </motion.div>

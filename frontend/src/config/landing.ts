@@ -100,28 +100,24 @@ export const serviceFeatures: {
 export const priceItems: {
   icon: IconKey;
   name: string;
-  price: string;
   image: string;
   featured?: boolean;
 }[] = [
   {
     icon: "shirt",
     name: "Shirts",
-    price: "From $4.99",
     image:
       "https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=400&q=85",
   },
   {
     icon: "shorts",
     name: "Shorts",
-    price: "From $6.99",
     image:
       "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=400&q=85",
   },
   {
     icon: "kids",
     name: "Kids Wear",
-    price: "$7.99",
     featured: true,
     image:
       "https://images.unsplash.com/photo-1503919005314-30d93d07d823?auto=format&fit=crop&w=400&q=85",
@@ -129,21 +125,18 @@ export const priceItems: {
   {
     icon: "tie",
     name: "Tie",
-    price: "From $3.99",
     image:
       "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=400&q=85",
   },
   {
     icon: "tshirt",
     name: "T-Shirts",
-    price: "From $4.49",
     image:
       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400&q=85",
   },
   {
     icon: "jeans",
     name: "Jeans",
-    price: "From $8.99",
     image:
       "https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=400&q=85",
   },

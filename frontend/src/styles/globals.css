@@ -8,12 +8,13 @@
     "Nunito", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-script: "Caveat", "Segoe Script", cursive;
 
-  --color-rusikwash-ink: #161b1c;
-  --color-rusikwash-sky: #d2f4ff;
-  --color-rusikwash-yellow: #ffedad;
-  --color-rusikwash-cyan: #02a2d7;
-  --color-rusikwash-gold: #ffd21a;
-  --color-rusikwash-pink: #e982aa;
+  --color-rusikwash-teal: #073b4c;
+  --color-rusikwash-orange: #ff4e00;
+  --color-rusikwash-black: #000000;
+  --color-rusikwash-white: #ffffff;
+  --color-primary: #073b4c;
+  --color-accent: #ff4e00;
+  --color-danger: #ff4e00;
 }
 
 @media (prefers-reduced-motion: reduce) {

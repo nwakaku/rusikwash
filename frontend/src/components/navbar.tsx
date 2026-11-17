@@ -36,20 +36,20 @@ export const Navbar = () => {
   );
 
   return (
-    <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
+    <nav className="sticky top-0 z-40 w-full border-b border-white/10 bg-rusikwash-teal text-white backdrop-blur-lg">
       <header className="mx-auto flex h-16 max-w-[1280px] items-center justify-between gap-4 px-6">
         <div className="flex items-center gap-4">
           <a className="flex items-center gap-1" href="/">
-            <Logo />
-            <p className="font-bold text-inherit">ACME</p>
+            <Logo className="text-rusikwash-orange" />
+            <p className="font-bold text-white">RusikWash</p>
           </a>
           <ul className="hidden lg:flex gap-4 ml-2">
             {siteConfig.navItems.map((item) => (
               <li key={item.href}>
                 <a
                   className={clsx(
-                    "text-foreground hover:text-accent transition-colors",
-                    "data-[active=true]:text-accent data-[active=true]:font-medium",
+                    "text-white/85 transition-colors hover:text-white",
+                    "data-[active=true]:font-medium data-[active=true]:underline data-[active=true]:decoration-rusikwash-orange data-[active=true]:decoration-2",
                   )}
                   href={item.href}
                 >
@@ -67,7 +67,7 @@ export const Navbar = () => {
             rel="noopener noreferrer"
             target="_blank"
           >
-            <TwitterIcon className="text-muted" />
+            <TwitterIcon className="text-white/75" />
           </Link>
           <Link
             aria-label="Discord"
@@ -75,7 +75,7 @@ export const Navbar = () => {
             rel="noopener noreferrer"
             target="_blank"
           >
-            <DiscordIcon className="text-muted" />
+            <DiscordIcon className="text-white/75" />
           </Link>
           <Link
             aria-label="Github"
@@ -83,17 +83,17 @@ export const Navbar = () => {
             rel="noopener noreferrer"
             target="_blank"
           >
-            <GithubIcon className="text-muted" />
+            <GithubIcon className="text-white/75" />
           </Link>
-          <ThemeSwitch />
+          <ThemeSwitch className="text-white" />
           <div className="hidden lg:flex">{searchInput}</div>
           <div className="hidden md:flex">
             <Button
-              className="text-sm font-normal"
+              className="text-sm font-normal text-white hover:bg-white/10"
               variant="tertiary"
               onPress={() => window.open(siteConfig.links.sponsor, "_blank")}
             >
-              <HeartFilledIcon className="text-danger" />
+              <HeartFilledIcon className="text-rusikwash-orange" />
               Sponsor
             </Button>
           </div>
@@ -106,13 +106,13 @@ export const Navbar = () => {
             rel="noopener noreferrer"
             target="_blank"
           >
-            <GithubIcon className="text-muted" />
+            <GithubIcon className="text-white/75" />
           </Link>
-          <ThemeSwitch />
+          <ThemeSwitch className="text-white" />
           <button
             aria-expanded={isMenuOpen}
             aria-label="Toggle menu"
-            className="p-2"
+            className="p-2 text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <svg
@@ -142,19 +142,17 @@ export const Navbar = () => {
       </header>
 
       {isMenuOpen && (
-        <div className="border-t border-separator sm:hidden">
+        <div className="border-t border-white/10 bg-rusikwash-teal sm:hidden">
           <div className="p-4">{searchInput}</div>
           <ul className="flex flex-col gap-2 px-4 pb-4">
             {siteConfig.navMenuItems.map((item, index) => (
               <li key={`${item.label}-${index}`}>
                 <Link
                   className={clsx(
-                    "block py-2 text-lg no-underline",
+                    "block rounded-lg px-3 py-2 text-lg no-underline transition-colors hover:bg-white/10",
                     index === 2
-                      ? "text-accent"
-                      : index === siteConfig.navMenuItems.length - 1
-                        ? "text-danger"
-                        : "text-foreground",
+                      ? "bg-rusikwash-orange font-semibold text-black"
+                      : "text-white",
                   )}
                   href="#"
                 >
