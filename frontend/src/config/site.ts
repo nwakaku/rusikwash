@@ -2,7 +2,8 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: "RusikWash",
-  description: "Make beautiful websites regardless of your design experience.",
+  description:
+    "Convenient laundry and dry cleaning with free collection and delivery in Port Harcourt, Rivers State, Nigeria.",
   navItems: [
     {
       label: "Home",

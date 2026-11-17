@@ -145,7 +145,7 @@ export const priceItems: {
 export const testimonials = [
   {
     name: "Aida Bugg",
-    role: "Busy parent, Brooklyn",
+    role: "Busy parent, Port Harcourt",
     quote:
       "I used to dread laundry day. Now RusikWash picks up, cleans and returns everything looking brand new. It honestly feels like a small luxury.",
     image:

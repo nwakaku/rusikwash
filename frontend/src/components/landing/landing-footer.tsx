@@ -29,6 +29,7 @@ const socialLinks = [
 
 export function LandingFooter() {
   const shouldReduceMotion = useReducedMotion();
+  const currentYear = new Date().getFullYear();
 
   return (
     <>
@@ -136,9 +137,9 @@ export function LandingFooter() {
                 <li className="flex gap-3">
                   <MapPinIcon className="mt-0.5 size-4 shrink-0 text-rusikwash-orange" />
                   <span>
-                    25 Breeze Avenue, Suite 12
+                    Port Harcourt
                     <br />
-                    Brooklyn, NY 11201
+                    Rivers State, Nigeria
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
@@ -197,7 +198,7 @@ export function LandingFooter() {
 
           <Separator className="bg-white/10" />
           <div className="flex flex-col items-center justify-between gap-3 pt-6 text-xs text-white/40 sm:flex-row">
-            <p>Copyright © 2023 RusikWash. All Right Reserved</p>
+            <p>Copyright © {currentYear} RusikWash. All rights reserved.</p>
             <div className="flex items-center gap-5">
               <Link
                 className="text-white/40 no-underline hover:text-white data-[hover=true]:no-underline"
